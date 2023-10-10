@@ -75,6 +75,7 @@ h4::after{
 
 /**************** Header *******************/
 #header{
+  position: relative;
   background-color: var(--dark-grey);
   padding: var(--spacing-20) 0;
 }
@@ -117,6 +118,26 @@ h4::after{
   right: 0;
 }
 
+.hamburger {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  top: 0;
+  right: 0;
+  border: none;
+  padding: 7px 9px;
+  background: var(--white);
+  cursor: pointer;
+}
+
+.hamburger i{
+  font-size: 26px;
+}
+
+.hamburger  .closeIcon {
+  display: none;
+}
+
 /**************** MAIN *****************/
 
 #about img{
@@ -142,6 +163,8 @@ h4::after{
   padding: 0;
 }
 .portfolio-list li{
+  display: flex;
+  justify-content: stretch;
   width: 32%;
   list-style: none;
   background-color: var(--white);
@@ -160,6 +183,9 @@ h4::after{
 }
 
 .portfolio-list li a{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
   text-decoration: none;
   color: var(--dark-grey);
 }
@@ -172,13 +198,27 @@ h4::after{
 /**************** FOOTER *****************/
 
 #contacts{
+  position: relative;
   padding: var(--spacing-50) 0;
   background-color: var(--dark-grey);
   color: #9B9B9B;
 }
 
+.footer-decor{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 249px;
+  height: 209px;
+  z-index: 99;
+  background-image: url("../images/lap-top.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 .contact-holder{
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -253,4 +293,59 @@ h4::after{
 .list-of-contact-info i{
   font-size: 20px;
   margin-right: var(--spacing-20);
+}
+
+
+/* ******** MEDIA QUERIES ********** */
+
+@media all and (max-width: 500px) {
+  .nav-list {
+    position: absolute;
+    transform: translateY(-100%);
+    transition: transform 0.2s;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    background: var(--dark-grey);
+    padding: 15px 10px;
+  }
+
+  .nav-list li{
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .showMenu {
+    transform: translateY(0);
+  }
+
+  .hamburger {
+    display: inline-block;
+  }
+
+  #portfolio,
+  #contacts{
+    padding: var(--spacing-30) 0;
+   }
+
+   .portfolio-list li{
+    width: 49%;
+   }
+
+   .portfolio-list li:first-child{
+    width: 100%;
+   }
+
+   .form-holder,
+   .contact-info{
+    width: 100%;
+   }
+}
+
+@media all  and (max-width: 750px){
+  .footer-decor{
+    width: 180px;
+    
+  }
 }
